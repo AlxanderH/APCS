@@ -1,0 +1,11 @@
+package main;
+//This is the main class, it is what is used to start up the program every time the program is run.
+public class Main {
+
+  public static void main(String[] args) {
+    Controller o = new Controller();
+    o.menu();
+  }
+}
+
+
