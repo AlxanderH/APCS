@@ -1,16 +1,4 @@
 package main;
-//This is the main class, it is what is used to start up the program every time the program is run.
-public class Main {
-
-  public static void main(String[] args) {
-    Controller o = new Controller();
-    o.menu();
-  }
-}
-
-
-
-package main;
 
 import javax.swing.JOptionPane;
 //This is the controller class which is the meat of the code, after the main class is ran, it will create a new constructor in this class which will select a new random word from the word pool.
