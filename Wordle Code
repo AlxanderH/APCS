@@ -1,0 +1,105 @@
+package main;
+
+public class Main {
+
+public static void main(String[] args) {
+Controller o = new Controller();
+o.menu();
+}
+}
+
+
+
+package main;
+
+import javax.swing.JOptionPane;
+
+public class Controller {
+private String[] wordpool = {"berry", "flees", "eater", "whirl", "frame", "crisp", "flats", "steep", "onion", "canny"};
+private String[][] map = new String[6][5];
+private String word;
+private int guessNum = 0;
+
+public Controller() {
+double x = Math.random() * 100;
+x = x / 10;
+word = wordpool[(int)x];
+}
+
+public String drawMap() {
+String drawMap = "";
+String space = " ";
+for(int i=0; i < 6; i++) {
+for(int c=0; c<5;c++) {
+if(map[i][c] != null) {
+drawMap += map[i][c] + space;
+}
+else {
+drawMap += "X";
+}
+}
+drawMap += "\n";
+}
+return drawMap;
+}
+
+public void menu() {
+boolean b = true;
+boolean c = true;
+String guess = "";
+JOptionPane.showMessageDialog(null, "Incorrect letters will show as * \nLetters in the word will show as lowercase \nCorrect letters in place will show as capital");
+while(b) {
+//taking a word from the user.
+//has to be 5 letters
+while(c) {
+guess = JOptionPane.showInputDialog(drawMap() + "Put 5 leter word below");
+if(guess.length() != 5) {
+JOptionPane.showMessageDialog(null, "ENTER A VALID WORD");
+}
+else {
+c = false;
+}
+}
+//Check if word matches guess
+check(guess);
+
+//exit cases
+if(guess.equals(word)) {
+b = false;
+}
+
+if(guessNum != 5) {
+guessNum++;
+c = true;
+}
+else {
+b = false;
+}
+}
+//check if the user won or lost.
+if(guess.equals(word)) {
+JOptionPane.showMessageDialog(null,drawMap() + "Congratulations, you won!");
+}
+else {
+JOptionPane.showMessageDialog(null, drawMap() + "Aww, you lost! Youre so bad!");
+}
+}
+public void check(String g) {
+//check if letters are contained in word, in place, or not in word.
+//Contained
+for(int i = 0; i<5; i++) {
+if(word.charAt(i) == g.charAt(i)) {
+map[guessNum][i] = String.valueOf(g.charAt(i)).toUpperCase();
+}
+else if(word.contains(String.valueOf(g.charAt(i)))) {
+map[guessNum][i] = String.valueOf(g.charAt(i)).toLowerCase();
+}
+else{
+map[guessNum][i] = "*";
+}
+}
+}
+}
+
+
+
