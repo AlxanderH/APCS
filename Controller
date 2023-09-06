@@ -70,7 +70,7 @@ public class controller {
 			JOptionPane.showMessageDialog(null,drawMap() + "Congratulations, you won!");
 		}
 		else {
-			JOptionPane.showMessageDialog(null, drawMap() + "Aww, you lost! Youre so bad!");
+			JOptionPane.showMessageDialog(null, drawMap() + "Aww, you lost!");
 		}
 	}
   //This is a checker method which checks if the player given word is the same or similar to the word randomly selected.
